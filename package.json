@@ -1,0 +1,33 @@
+{
+  "name": "aws-streams",
+  "version": "1.0.0",
+  "description": "A library for processing both DynamoDb and Kinesis streams. Support for the partitioned consumer pattern in which each consumer only reads a specific subset, or partition, of the message stream. This pattern enables horizontal scale for event processing and provides other stream-focused features that are unavailable in queues and topics.",
+  "main": "index.js",
+  "author": "Dan Ryan",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^21.1.5",
+    "jest": "^21.2.1",
+    "ts-jest": "^21.2.1",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.6.1"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node './src/aws-streams/index.ts'",
+    "test": "jest 'src/tests'"
+  }
+}
