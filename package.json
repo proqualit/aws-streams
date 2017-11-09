@@ -5,7 +5,10 @@
   "main": "index.js",
   "author": "Dan Ryan",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "@types/ajv": "^1.0.0",
+    "ajv": "^5.3.0"
+  },
   "devDependencies": {
     "@types/jest": "^21.1.5",
     "jest": "^21.2.1",
