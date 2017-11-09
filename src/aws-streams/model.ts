@@ -1,7 +1,7 @@
 import * as Ajv from 'ajv'
 
 export interface ApplicationOptions {
-  streamEndpoint: string
+  streamArn: string
 }
 
 export class AWSStreamsApplicationOptionsValidationError extends Error {

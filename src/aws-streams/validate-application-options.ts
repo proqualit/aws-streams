@@ -7,11 +7,11 @@ export default (applicationOptions: ApplicationOptions) => {
   const applicationOptionsSchema = {
     type: 'object',
     properties: {
-      streamEndpoint: {
+      streamArn: {
         type: 'string'
       }
     },
-    required: ['streamEndpoint']
+    required: ['streamArn']
   }
   if (!ajv.validate(applicationOptionsSchema, applicationOptions)) {
     console.log('validation failed')
