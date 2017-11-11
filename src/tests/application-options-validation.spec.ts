@@ -6,7 +6,10 @@ const failWithNoError = () => fail('error expected but was not called')
 
 test('must fail when the stream ARN is not passed', async () => {
   try {
-    await awsStreams({} as any)
+    await awsStreams({
+      awsServiceConfigurationOptions: {
+        region: 'eu-west-1'
+    }} as any)
     failWithNoError()
   } catch (e) {
     expect(e instanceof AWSStreamsApplicationOptionsValidationError).toBe(true)
@@ -17,7 +20,9 @@ test('must fail when the stream ARN is not passed', async () => {
 
 test('must fail when the stream ARN does not point to a valid stream', async () => {
   try {
-    await awsStreams({streamArn: 'arn:aws:dynamodb:eu-west-1:733578946173:table/no-existant-table/stream/2017-10-05T14:36:01.514'})
+    await awsStreams({streamArn: 'arn:aws:dynamodb:eu-west-1:733578946173:table/no-existant-table/stream/2017-10-05T14:36:01.514', awsServiceConfigurationOptions: {
+      region: 'eu-west-1'
+    }})
     failWithNoError()
   } catch (e) {
     expect(e instanceof Error)

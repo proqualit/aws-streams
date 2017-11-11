@@ -1,6 +1,6 @@
-import {ApplicationOptions} from '../model'
 import dynamodbStreamProvider from './dynamodb-stream-provider'
+import {ApplicationOptions} from '../model'
 
-export default (applicationOptions) => {
-  return dynamodbStreamProvider({})
+export default (applicationOptions: ApplicationOptions) => {
+  return dynamodbStreamProvider(applicationOptions.awsServiceConfigurationOptions)
 }

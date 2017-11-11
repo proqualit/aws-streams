@@ -1,6 +1,8 @@
 import * as Ajv from 'ajv'
+import {ServiceConfigurationOptions} from 'aws-sdk/lib/service'
 
 export interface ApplicationOptions {
+  awsServiceConfigurationOptions?: ServiceConfigurationOptions
   streamArn: string
 }
 
