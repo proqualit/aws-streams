@@ -1,6 +1,5 @@
 import awsStreams from '../aws-streams'
-import {AWSStreamsApplicationOptionsValidationError} from '../aws-streams/model'
-import './support/jest-extensions/custom-matchers'
+import { AWSStreamsApplicationOptionsValidationError } from '../aws-streams/model'
 
 const failWithNoError = () => fail('error expected but was not called')
 
@@ -9,7 +8,7 @@ test('must fail when the stream ARN is not passed', async () => {
     await awsStreams({
       awsServiceConfigurationOptions: {
         region: 'eu-west-1'
-    }} as any)
+      }} as any)
     failWithNoError()
   } catch (e) {
     expect(e instanceof AWSStreamsApplicationOptionsValidationError).toBe(true)

@@ -1,17 +1,15 @@
-import * as ajvFactory from 'ajv'
 import validateApplicationOptions from './validate-application-options'
-import {ApplicationOptions} from './model'
+import { ApplicationOptions } from './model'
 import streamProviderFactory from './stream-providers/stream-provider-factory'
 
-const ajv = ajvFactory({allErrors: true})
-
 const run = async (applicationOptions: ApplicationOptions) => {
-  async function createStreamProvider() {
-    return await streamProviderFactory(applicationOptions)
+  async function createStreamProvider () {
+    return streamProviderFactory(applicationOptions)
   }
 
-  async function ensureStream(streamProvider) {
-    await streamProvider.describeStream({StreamArn: applicationOptions.streamArn})
+  // todo supply type information
+  async function ensureStream (streamProvider: any) {
+    await streamProvider.describeStream({ StreamArn: applicationOptions.streamArn })
   }
 
   validateApplicationOptions(applicationOptions)
@@ -20,5 +18,5 @@ const run = async (applicationOptions: ApplicationOptions) => {
 }
 
 export default (applicationOptions: ApplicationOptions) => {
-  return run(applicationOptions)  
+  return run(applicationOptions)
 }

@@ -6,15 +6,19 @@
   "author": "Dan Ryan",
   "license": "MIT",
   "dependencies": {
-    "@types/ajv": "^1.0.0",
     "ajv": "^5.3.0",
     "aws-sdk": "^2.148.0"
   },
   "devDependencies": {
+    "@types/ajv": "^1.0.0",
+    "@types/aws-sdk": "^2.7.0",
     "@types/jest": "^21.1.5",
     "jest": "^21.2.1",
+    "pre-commit": "^1.2.2",
     "ts-jest": "^21.2.1",
     "ts-node": "^3.3.0",
+    "tslint": "^5.8.0",
+    "tslint-config-standard": "^7.0.0",
     "typescript": "^2.6.1"
   },
   "jest": {
@@ -28,10 +32,18 @@
       "js"
     ]
   },
+  "pre-commit": [
+    "build",
+    "clean",
+    "lint",
+    "test"
+  ],
   "scripts": {
+    "clean": "rm -rf dist",
     "build": "tsc",
     "start": "node dist/index.js",
     "dev": "ts-node './src/aws-streams/index.ts'",
-    "test": "jest 'src/tests'"
+    "test": "jest 'src/tests'",
+    "lint": "tslint --project tsconfig.json"
   }
 }
