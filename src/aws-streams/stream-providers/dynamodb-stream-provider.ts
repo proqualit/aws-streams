@@ -1,10 +1,10 @@
 import { DynamoDBStreams } from 'aws-sdk'
+import { StreamProvider, StreamProviderParams } from './stream-provider'
 
-export default async (config?: DynamoDBStreams.ClientConfiguration) => {
+export default (config?: DynamoDBStreams.ClientConfiguration): StreamProvider => {
   const client = new DynamoDBStreams(config)
   return {
-    // todo supply type information
-    describeStream: (params: any) => new Promise((resolve, reject) => client.describeStream(params, (err, data) => {
+    describeStream: (params: StreamProviderParams) => new Promise((resolve, reject) => client.describeStream(params, (err, data) => {
       if (err) { reject(err) } else { resolve(data) }
     }))
   }
