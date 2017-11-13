@@ -1,11 +1,6 @@
 import { DynamoDBStreams } from 'aws-sdk'
-import { StreamProvider, StreamProviderParams } from './stream-provider'
+import client from '../data-access/dynamodb/dynamodb-streams-client-facade'
 
-export default (config?: DynamoDBStreams.ClientConfiguration): StreamProvider => {
-  const client = new DynamoDBStreams(config)
-  return {
-    describeStream: (params: StreamProviderParams) => new Promise((resolve, reject) => client.describeStream(params, (err, data) => {
-      if (err) { reject(err) } else { resolve(data) }
-    }))
-  }
+export default async (config?: DynamoDBStreams.ClientConfiguration) => {
+  return client(config)
 }

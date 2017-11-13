@@ -7,11 +7,13 @@
   "license": "MIT",
   "dependencies": {
     "ajv": "^5.3.0",
-    "aws-sdk": "^2.148.0"
+    "aws-sdk": "^2.148.0",
+    "bunyan": "^1.8.12"
   },
   "devDependencies": {
     "@types/ajv": "^1.0.0",
     "@types/aws-sdk": "^2.7.0",
+    "@types/bunyan": "^1.8.3",
     "@types/jest": "^21.1.5",
     "jest": "^21.2.1",
     "pre-commit": "^1.2.2",
@@ -43,7 +45,8 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "dev": "ts-node './src/aws-streams/index.ts'",
-    "test": "jest 'src/tests'",
-    "lint": "tslint --project tsconfig.json"
+    "test": "yarn run setup-dev-env && jest 'src/tests'",
+    "lint": "tslint --project tsconfig.json",
+    "setup-dev-env": "docker-compose up -d dynamodb"
   }
 }

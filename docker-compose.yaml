@@ -1,0 +1,6 @@
+dynamodb:
+    image: instructure/dynamo-local-admin
+    labels: 
+      com.acuris.service.group: companyhub
+    ports: 
+      - "8000:8000"

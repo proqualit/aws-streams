@@ -1,8 +1,8 @@
 export interface StreamProvider {
-  describeStream: (params: StreamProviderParams) => Promise<DescribeStreamResult>
+  describeStream: (params: DescribeStreamParams) => Promise<DescribeStreamResult>
 }
 
-export interface StreamProviderParams {
+export interface DescribeStreamParams {
   StreamArn: string
 }
 
